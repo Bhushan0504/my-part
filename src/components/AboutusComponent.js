@@ -1,9 +1,12 @@
 import React from 'react';
+import Header from './HeaderComponent';
+import Footer from './FooterComponent';
 
 function Aboutus(props) {
     return(
         <div className="container">
-            <h4> Aboout us</h4>
+            <Header clients={props.clients}/>
+            <h4> About us</h4>
         </div>
     );
 }

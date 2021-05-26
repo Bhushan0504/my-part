@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Navbar,NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Modal, ModalBody, ModalHeader, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import {NavLink,Link} from 'react-router-dom';
-import Dashboard from './DashboardComponent';
+import Confirm from './LoginConirmationComponent';
 
 class Header extends Component{
 
@@ -9,10 +9,10 @@ class Header extends Component{
         super(props);
         this.state = {
             isNavOpen: false,
-            isModalOpen :false,
+            isModalOpen : false,
             loginInfo: null,
-            userName: "Bhushan",
-            passWord: null
+            userName: null,
+            passWord: null,
         };
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
@@ -52,14 +52,14 @@ class Header extends Component{
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/aboutus">
+                                    <NavLink className="nav-link" to="/signup_worker">
                                         Register as employee
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="">
+                                    <Link className="nav-link" to="/signup_client">
                                         Signup
-                                    </NavLink>
+                                    </Link>
                                 </NavItem>
                                 <NavItem>
                                     <Link className="nav-link" onClick={this.toggleModal}>
@@ -95,7 +95,7 @@ class Header extends Component{
                         </Form>
                     </ModalBody>
                 </Modal>
-                <Dashboard client = {this.props.clients.filter((client) => this.state.userName === client.naam && this.state.passWord === client.pwd)[0]} />
+                <Confirm client = {this.props.clients.filter((client) => this.state.userName === client.naam && this.state.passWord === client.pwd)[0]} />
             </>
         )
     }
