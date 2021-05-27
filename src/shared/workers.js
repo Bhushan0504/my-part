@@ -1,35 +1,39 @@
 export const WORKER = 
     [
         {
-            id: 1,
+            id: 0,
             naam: 'Bai-1',
             experience: '2',
             phno: '9876543210',
-            gender: 'F',
+            gender: 'Female',
+            area: 'Nipania',
             specialization: [ "Jhadu", "Pocha" ]
         },
         {
-            id: 2,
+            id: 1,
             naam: 'Bai-2',
             experience: '5',
-            gender: 'F',
+            gender: 'Female',
+            area: 'Near airport',
             phno: '1234567890',
             specialization: [ "Jhadu" ]
         },
         {
-            id: 3,
+            id: 2,
             naam: 'Selmon Bhoi',
             experience: '1',
             phno: '3456789012',
-            gender: 'M',
+            gender: 'Male',
+            area: 'Clerk colony',
             specialization: [ "Jhadu", "Pocha" ]
         },
         {
-            id: 4,
+            id: 3,
             naam: 'Suyash',
             experience: '2',
             phno: '5678901234',
-            gender: 'F',
+            gender: 'Female',
+            area: 'Nipania',
             specialization: [ "Jhadu", "Pocha", "Dusting" ]
         }
     ]

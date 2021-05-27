@@ -9,7 +9,7 @@ class Header extends Component{
         super(props);
         this.state = {
             isNavOpen: false,
-            isModalOpen : false,
+            isModalOpen : true,
             loginInfo: null,
             userName: null,
             passWord: null,

@@ -1,12 +1,12 @@
 export const CLIENTS = 
     [
         {
-            id: 1,
+            id: 0,
             naam: 'Bhushan Patil',
             email: 'bhushanpatil0504@gmail.com',
             phno: '8878668537',
             pwd: 'Blackbuck',
-            address: [
+            address:
                 {
                     hno: '17-b',
                     street: 'Ankur aangan',
@@ -14,15 +14,14 @@ export const CLIENTS =
                     city: 'Indore',
                     state: 'Madhya Padesh'
                 }
-            ]
         },
         {
-            id: 2,
+            id: 1,
             naam: "Arbab Khan",
             email: "ak.arbabkhan4@gmail.com",
             phno: "7389200225",
             pwd: "Pajero",
-            address: [
+            address:
                 {
                     hno: "10",
                     street: "Db City",
@@ -30,15 +29,14 @@ export const CLIENTS =
                     city: "Indore",
                     state: "Madhya Pradesh"
                 }
-            ]
         },
         {
-            id: 3,
+            id: 2,
             naam: "Kukoo Jain",
             email: "jainkukoo@gmail.com",
             phno: "9425986202",
             pwd: "Aishwarya",
-            address: [
+            address:
                 {
                     hno: "18",
                     street: "20",
@@ -46,15 +44,14 @@ export const CLIENTS =
                     city: "Indore",
                     state: "Madhya Pradesh"
                 }
-            ]
         },
         {
-            id: 4,
+            id: 3,
             naam:"Mahiransh Sharma",
             email: "mahisharma.9589@gmail.com",
             phno: "9589321096",
             pwd: "Jail",
-            address: [
+            address:
                 {
                     hno: "30",
                     street: "13",
@@ -62,6 +59,5 @@ export const CLIENTS =
                     city: "Indore",
                     state: "Madhya Pradesh"
                 }
-            ]
         }
     ]

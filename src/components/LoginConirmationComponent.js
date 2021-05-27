@@ -8,7 +8,7 @@ class Confirm extends Component {
         super(props);
 
         this.state = {
-            isModalOpen :false
+            isModalOpen :true
         };
 
     this.toggleModal = this.toggleModal.bind(this);
