@@ -1,2 +1,5 @@
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const ADD_RATING = 'ADD_RATING';
+export const WORKERS_LOADING = 'WORKERS_LOADING';
+export const WORKERS_FAILED = 'WORKERS_FAILED';
+export const ADD_WORKERS = 'ADD_WORKERS';

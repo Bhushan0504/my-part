@@ -1,4 +1,4 @@
-export const WORKER = 
+export const WORKERS = 
     [
         {
             id: 0,

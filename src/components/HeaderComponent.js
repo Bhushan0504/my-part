@@ -44,8 +44,7 @@ class Header extends Component{
     render(){
 
         return(
-            <>
-                <Navbar dark color="primary" expand="md">
+            <><Navbar dark color="primary" expand="md">
                     <div className="container">
                         <NavbarToggler onClick={this.toggleNav} />
                         <NavbarBrand href="/" > AYS | At Your Service</NavbarBrand>
@@ -70,6 +69,7 @@ class Header extends Component{
                         </Collapse>
                     </div>
                 </Navbar>
+                
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
                     <ModalBody>

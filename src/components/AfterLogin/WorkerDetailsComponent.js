@@ -8,6 +8,7 @@ import {
     Col,
     Label } from 'reactstrap';
 import {Control, LocalForm, Errors} from "react-redux-form";
+import { Loading } from './LoadingComponent';
 
 class Worker_details extends Component {
     constructor(props){
@@ -46,9 +47,31 @@ class Worker_details extends Component {
 
     render(){
 
-        const lcomments = this.props.comments.filter((comment) => comment.wid === this.props.worker.id)
+        if(this.props.isLoading){
+            return(
+                <div className="container">
+                    <div className="row">
+                        <Loading />
+                    </div>
+                </div>
+            )
+        }
 
-        const list = lcomments.map((comment) => {return (
+        else if (this.props.errMess){
+            return(
+                <div className="container">
+                    <div className="row">
+                        <h4>{this.props.errMess}</h4>
+                    </div>
+                </div>
+            )
+        }
+        
+        else if(this.props.worker != null)
+
+        var lcomments = this.props.comments.filter((comment) => comment.wid === this.props.worker.id)
+
+        var list = lcomments.map((comment) => {return (
             <p>{comment.content}</p>
              );
         });
