@@ -8,6 +8,8 @@ import {
     Col,
     Label } from 'reactstrap';
 import {Control, LocalForm, Errors} from "react-redux-form";
+import { Loading } from './LoadingComponent';
+
 
 class Client_profile extends Component {
     constructor(props){
@@ -17,6 +19,28 @@ class Client_profile extends Component {
     }
 
     render(){
+
+        if (this.props.clientsLoading){
+            return(
+                <div className="container">
+                    <div className="row">
+                        <Loading />
+                    </div>
+                </div>
+            )
+          }
+
+          else if (this.props.clientsErrMess){
+            return(
+                <div className="container">
+                    <div className="row">
+                        <h4>{this.props.errMess}</h4>
+                    </div>
+                </div>
+            )
+        }
+    
+        else if(!this.props.clientsLoading){
 
         return(
             <div>
@@ -32,7 +56,7 @@ class Client_profile extends Component {
                 <h6>State : {this.props.client.address.state}</h6>
             </div>
         )
-
+        }
     }
 }
 

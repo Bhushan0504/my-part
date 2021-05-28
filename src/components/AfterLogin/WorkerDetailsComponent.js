@@ -7,7 +7,7 @@ import {
     Row,
     Col,
     Label } from 'reactstrap';
-import {Control, LocalForm, Errors} from "react-redux-form";
+import {Control, LocalForm} from "react-redux-form";
 import { Loading } from './LoadingComponent';
 
 class Worker_details extends Component {
@@ -37,12 +37,12 @@ class Worker_details extends Component {
 
     handleSubmit1(values){
         this.toggleModal1();
-        this.props.addComment(values.content, this.props.client.id, this.props.worker.id);
+        this.props.postComment(values.content, this.props.client.id, this.props.worker.id);
     }
 
     handleSubmit2(values){
         this.toggleModal2();
-        this.props.addRating(values.rating, this.props.client.id, this.props.worker.id);
+        this.props.postRating(values.rating, this.props.client.id, this.props.worker.id);
     }
 
     render(){

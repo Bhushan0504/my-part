@@ -31,7 +31,7 @@ class Dashboard extends Component {
 
       var avg = (sum/lratings.length).toFixed(1);*/
 
-      if (this.props.workersLoading){
+      if (this.props.workersLoading || this.props.clientsLoading){
         return(
             <div className="container">
                 <div className="row">
@@ -41,17 +41,17 @@ class Dashboard extends Component {
         )
       }
 
-      else if (this.props.workersErrMess){
+      else if (this.props.workersErrMess || this.props.clientsErrMess){
         return(
             <div className="container">
                 <div className="row">
-                    <h4>{this.props.errMess}</h4>
+                    <h4>{this.props.workersErrMess}</h4>
                 </div>
             </div>
         )
     }
 
-    else if(!this.props.workersLoading){
+    else if(!this.props.workersLoading || this.props.clientsLoading){
 
       const lworkers = this.props.workers.filter((worker) => this.props.client.address.area === worker.area)
       const list = lworkers.map((worker) => {return (

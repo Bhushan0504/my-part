@@ -16,6 +16,6 @@ export const Workers = (state = {
             return{...state, isLoading: true, errMess: action.payload, workers: []};
 
         default:
-            return state;
+            return state; 
     }
 }

@@ -9,8 +9,7 @@ import { connect } from 'react-redux';
 import Dashboard from './AfterLogin/DashboardComponent';
 import Worker_details from './AfterLogin/WorkerDetailsComponent';
 import Client_profile from './AfterLogin/ClientProfileComponent';
-import {addComment} from '../redux/ActionCreators';
-import {addRating, fetchWorkers} from '../redux/ActionCreators';
+import {postComment, postRating, fetchClients, fetchComments, fetchRatings, fetchWorkers} from '../redux/ActionCreators';
 
 const mapStateToProps = state =>{
 
@@ -25,10 +24,12 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch => ({
 
-  addComment: (cid, wid, content) => dispatch(addComment(cid, wid, content)),
-  addRating: (cid, wid, content) => dispatch(addRating(cid, wid, content)),
-  fetchWorkers: () => {dispatch(fetchWorkers())}
-
+  postComment: (cid, wid, content) => dispatch(postComment(cid, wid, content)),
+  postRating: (cid, wid, content) => dispatch(postRating(cid, wid, content)),
+  fetchWorkers: () => {dispatch(fetchWorkers())},
+  fetchClients: () => {dispatch(fetchClients())},
+  fetchComments: () => {dispatch(fetchComments())},
+  fetchRatings: () => {dispatch(fetchRatings())}
 })
 
 class Main  extends Component {
@@ -40,23 +41,30 @@ class Main  extends Component {
 
   componentDidMount(){
     this.props.fetchWorkers();
+    this.props.fetchClients();
+    this.props.fetchComments();
+    this.props.fetchRatings();
   }
 
   render(){
 
     const ClientWithId = ({match}) => {
       return(
-        <Dashboard client={this.props.clients.filter((client) => client.id === parseInt(match.params.clientId,10))[0]}
+        <Dashboard client={this.props.clients.clients.filter((client) => client.id === parseInt(match.params.clientId,10))[0]}
           workersLoading = {this.props.workers.isLoading}
           workersErrMess = {this.props.workers.errMess}
+          clientsLoading = {this.props.clients.isLoading}
+          clientsErrMess = {this.props.clients.errMess}
           workers = {this.props.workers.workers}
-          ratings = {this.props.ratings}/>
+          ratings = {this.props.ratings.ratings}/>
       )
     }
 
     const ProfileWithId = ({match}) => {
       return(
-        <Client_profile client={this.props.clients.filter((client) => client.id === parseInt(match.params.clientId,10))[0]} />
+        <Client_profile client={this.props.clients.clients.filter((client) => client.id === parseInt(match.params.clientId,10))[0]}
+        clientsLoading = {this.props.clients.isLoading}
+        clientsErrMess = {this.props.clients.errMess} />
       )
     }
 
@@ -65,11 +73,11 @@ class Main  extends Component {
         <Worker_details worker={this.props.workers.workers.filter((worker) => worker.id === parseInt(match.params.workerId,10))[0]}
           isLoading = {this.props.workers.isLoading}
           errMess = {this.props.workers.errMess}
-          client={this.props.clients.filter((client) => client.id === parseInt(match.params.clientId,10))[0]}
-          comments = {this.props.comments} 
-          ratings = {this.props.ratings}
-          addComment = {this.props.addComment}
-          addRating = {this.props.addRating}/>
+          client={this.props.clients.clients.filter((client) => client.id === parseInt(match.params.clientId,10))[0]}
+          comments = {this.props.comments.comments}
+          postComment = {this.props.postComment} 
+          ratings = {this.props.ratings.ratings}
+          postRating = {this.props.postRating}/>
       )
     }
     
@@ -77,8 +85,8 @@ class Main  extends Component {
       <div>
         {/*<Header clients={this.props.clients}/>*/}
         <Switch>
-            <Route path="/home" component={() => <Home clients={this.props.clients}/>}/>
-            <Route path="/aboutus" component={() => <Aboutus clients={this.props.clients} />}/>
+            <Route path="/home" component={() => <Home clients={this.props.clients.clients}/>}/>
+            <Route path="/aboutus" component={() => <Aboutus clients={this.props.clients.clients} />}/>
             <Route path="/signup_client" component={() => <Signup_client />}/>
             <Route path="/signup_worker" component={() => <Signup_worker />}/>
             <Route path="/dashboard/:clientId" component={ClientWithId} />
